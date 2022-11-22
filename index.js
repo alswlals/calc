@@ -5,14 +5,15 @@ let buttons = document.querySelectorAll('button');
 let operatorCheck = true;
 let operatorReplace = false;
 let dotCheck = true;
-let equalsCheck = true;
+let equalsCheck = true;     
 
 buttons.forEach((button) => {
     button.addEventListener('click', (e) => {
         switch(button.value){
+            /* switch문 사용해 각 버튼의 value별로 다른 이벤트 실행*/
             case 'operator' :
                 if (operatorCheck === false && operatorReplace === false){
-                    displayContent += e.target.textContent;    
+                    displayContent += e.target.textContent;    //출력시키기
                     display.innerHTML = displayContent; 
                     operatorCheck = true;
                     operatorReplace = true;
@@ -34,7 +35,7 @@ buttons.forEach((button) => {
 
             case 'equals':
                 if(operatorCheck === false && equalsCheck === false) {
-                    displayContent = (new Function('return '+displayContent.replace('÷','/').replace('x','*')))();
+                    displayContent = (new Function('return '+displayContent.replace('x','*')));
                     display.innerHTML = displayContent;
                     operatorCheck = false;
                     equalsCheck = true;
